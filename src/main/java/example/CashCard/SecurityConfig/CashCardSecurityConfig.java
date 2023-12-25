@@ -36,7 +36,12 @@ public class CashCardSecurityConfig {
                 .password(passwordEncoder.encode("qrs456"))
                 .roles("NON-OWNER") // new role
                 .build();
-        return new InMemoryUserDetailsManager(deep,hankOwnsNoCards);
+        UserDetails kumar = users
+                .username("kumar2")
+                .password(passwordEncoder.encode("xyz789"))
+                .roles("CARD-OWNER")
+                .build();
+        return new InMemoryUserDetailsManager(deep,hankOwnsNoCards,kumar);
     }
 
     @Bean
